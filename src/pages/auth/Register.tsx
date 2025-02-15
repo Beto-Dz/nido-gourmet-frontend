@@ -42,7 +42,7 @@ export const Register = () => {
         placeholder="¿Cuál es tu nombre?" isValid={!nameValid && formSubmitted} description="Ingresa tu nombre" minLength={3} />
 
       <InputField type="tel" name="phone" label="Número de teléfono" value={phone} onChange={handleOnInputChange} pattern={onlyNumbers.html}
-        placeholder="ejemplo@00.com" isValid={!phoneValid && formSubmitted} description="Ingresa tu número telefónico" minLength={6} />
+        placeholder="######" isValid={!phoneValid && formSubmitted} description="Ingresa tu número telefónico" minLength={6} />
 
       <InputField type="email" name="email" label="Correo electrónico" value={email} onChange={handleOnInputChange} pattern={emailP.html}
         placeholder="ejemplo@00.com" isValid={!emailValid && formSubmitted} description="Ingresa tu correo" minLength={9} />
@@ -50,11 +50,11 @@ export const Register = () => {
       <InputFieldPassword label="Contraseña" value={password} onChange={handleOnInputChange}
         placeholder="**********" isValid={!passwordValid && formSubmitted} description="Ingresa tu contraseña" minLength={5} />
       
-      <Link to="/auth" className="text-sm text-sky-500" >
+      <Link to="/auth" className="text-sm text-emerald-500" >
         ¿Ya tiene una cuenta?. ¡Inicia sesión aquí!.
       </Link>
 
-      <button type="submit" disabled={false} className="bg-sky-400 text-white self-center disabled:bg-sky-100" >
+      <button type="submit" disabled={false} className="bg-emerald-400 text-white self-center disabled:bg-emerald-100 hover:bg-emerald-600 transition-all ease-in-out" >
         Ingresar
       </button>
     </form>

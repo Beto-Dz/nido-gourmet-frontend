@@ -26,7 +26,7 @@ export const InputFieldPassword: FC<Props> = ({ name = "password", label, value,
       <label htmlFor={name} className="font-semibold text-slate-800 after:content-['*'] after:ml-0.5 after:text-red-500" >
         {label}
       </label>
-      <label htmlFor={name} className={`p-1 flex ${peer} rounded-md ring-2 ring-sky-200 ${   isValid ? "has-invalid:ring-red-400" : "has-focus:ring-sky-500" }`} >
+      <label htmlFor={name} className={`p-1 flex ${peer} rounded-md ring-2 ring-emerald-200 ${   isValid ? "has-invalid:ring-red-400" : "has-focus:ring-emerald-500" } transition-all ease-in-out`} >
         <input
           type={passwordVisible ? "text" : "password"}
           name={name}
@@ -40,7 +40,7 @@ export const InputFieldPassword: FC<Props> = ({ name = "password", label, value,
           placeholder={placeholder}
           className={`grow`}
         />
-        <EyeIcon className={`h-6 w-6 cursor-pointer ${   passwordVisible ? "stroke-sky-500" : "stroke-sky-300" }`} onClick={() => setPasswordVisible(!passwordVisible)} />
+        <EyeIcon className={`h-6 w-6 cursor-pointer ${   passwordVisible ? "stroke-emerald-500" : "stroke-emerald-200" }`} onClick={() => setPasswordVisible(!passwordVisible)} />
       </label>
       <span className={`text-slate-500 text-xs ${   isValid ? `${peerInvalid}password:text-red-500` : "" } `} >
         {`${description} (mayor a ${minLength} caracteres).`}
