@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { patterns } from "../../utilitys";
-import { useForm } from "../../hooks";
+import { useAuthSlice, useForm } from "../../hooks";
 import { InputField, InputFieldPassword } from "../../components";
 
 // obteniendo el patron de correo
@@ -14,6 +14,10 @@ const formValidations = {
 };
 
 export const Login = () => {
+
+  // uso de custom hook para manejar la autenticacion
+  const { status, handleStartLogin } = useAuthSlice();
+
   // estado para formulario
   const { email, password, emailValid, passwordValid, handleOnInputChange, formObject, isValidForm, } 
     = useForm({ email: "", password: "" }, formValidations);
@@ -21,14 +25,17 @@ export const Login = () => {
   // estado para manejar cuando se hace submit y mostrar errores del formulario
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
-  const handleOnSubmit = (e: any): void => {
+  const handleOnSubmit = (e: any) => {
     e.preventDefault();
 
     setFormSubmitted(true);
 
     if (!isValidForm) return;
 
-    console.log(formObject);
+    // TODO: manejar respuesta
+    console.log(formObject)
+
+    handleStartLogin(email, password);
   };
 
   return (
@@ -45,7 +52,7 @@ export const Login = () => {
         ¿No tienes una cuenta?. ¡Registrate aquí!.
       </Link>
 
-      <button type="submit" disabled={false} className="bg-emerald-500 text-white self-center disabled:bg-emerald-100 hover:bg-emerald-600 transition-all ease-in-out" >
+      <button type="submit" disabled={status === 'checking'} className="bg-emerald-500 text-white self-center disabled:bg-emerald-100 hover:bg-emerald-600 transition-all ease-in-out" >
         Ingresar
       </button>
     </form>
