@@ -3,3 +3,6 @@ export * from "./auth/Login.tsx";
 export * from "./auth/Register.tsx";
 export * from "./auth/Layout.tsx";
 export * from "./loader/Loader.tsx";
+export * from "./app/Home.tsx";
+export * from "./app/Profile.tsx";
+export * from "./app/Devices.tsx";

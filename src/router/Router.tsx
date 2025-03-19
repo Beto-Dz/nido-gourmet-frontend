@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import { LandingPage, Login, Register, Layout, Loader } from "../pages";
-import { App } from "../App";
+import { LandingPage, Login, Register, Layout, Loader, Home, Devices, Profile } from "../pages";
 import { useAuthSlice } from "../hooks";
 import { useEffect } from "react";
+import { LayoutApp } from "../pages/app/LayoutApp";
 
 export const Router = () => {
   // Obteniendo el estado de la autenticación para establecer rutas públicas y privadas
@@ -15,7 +15,7 @@ export const Router = () => {
   }, [status]);
 
   if (status === "checking") {
-    return <Loader />
+    return <Loader />;
   }
 
   return (
@@ -48,7 +48,30 @@ export const Router = () => {
         ) : (
           // Rutas de app cuando se está autenticado
           <Route path="nido">
-            <Route index element={<App />} />
+            <Route
+              index
+              element={
+                <LayoutApp>
+                  <Home />
+                </LayoutApp>
+              }
+            />
+            <Route
+              path="dispositivos"
+              element={
+                <LayoutApp>
+                  <Devices />
+                </LayoutApp>
+              }
+            />
+            <Route
+              path="perfil"
+              element={
+                <LayoutApp>
+                  <Profile />
+                </LayoutApp>
+              }
+            />
             {/* Rutas perdidas */}
             <Route path="*" element={<Navigate to="/nido" />} />
           </Route>

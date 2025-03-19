@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "./auth/AuthSlice";
+import { UiSlice } from "./ui/UiSlice";
 
 // Definir el tipo del estado global
 // ReturnType retorna un tipado
@@ -10,5 +11,6 @@ export type RootState = ReturnType<typeof store.getState>;
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
+    ui: UiSlice.reducer,
   },
 });

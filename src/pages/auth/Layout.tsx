@@ -9,9 +9,9 @@ interface Props {
 
 export const Layout: FC<Props> = ({ children }) => {
   return (
-    <header className="min-h-dvh w-full relative bg-[url(/assets/hojas.svg)] bg-cover backdrop-blur-2xl">
+    <header className="min-h-dvh w-full relative bg-[url(/assets/hojas.svg)] bg-cover">
       <Particles
-          className="min-h-dvh"
+          className="min-h-dvh backdrop-blur-[1.5px]"
           particleColors={['#000000', '#000000']}
           particleCount={500}
           particleSpread={20}
