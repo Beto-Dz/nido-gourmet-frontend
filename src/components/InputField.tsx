@@ -35,7 +35,7 @@ export const InputField: FC<Props> = ({ type, name, label, value, onChange, patt
         required={required}
         autoComplete="on"
         placeholder={placeholder}
-        className={`p-1 rounded-md ring-2 ring-emerald-200 ${peer} ${ isValid ? "invalid:ring-red-400" : "focus:ring-primary-black" } transition-all ease-in-out`}
+        className={`p-1 rounded-md ring-2 ring-twine-200 ${peer} ${ isValid ? "invalid:ring-red-400" : "focus:ring-twine-900" } transition-all ease-in-out`}
       />
       <span className={`text-slate-500 text-xs ${ isValid ? `${peerInvalid}:text-red-500` : "" } `} >
         {`${description} (mayor a ${minLength} caracteres).`}

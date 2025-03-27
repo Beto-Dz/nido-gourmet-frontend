@@ -48,11 +48,11 @@ export const Login = () => {
         description="Ingresa tu contraseña" minLength={5}
       />
 
-      <Link to="/auth/register" className="text-sm text-emerald-500" >
+      <Link to="/auth/register" className="text-sm text-twine-500" >
         ¿No tienes una cuenta?. ¡Registrate aquí!.
       </Link>
 
-      <button type="submit" disabled={status === 'checking'} className="bg-emerald-500 text-white self-center disabled:bg-emerald-100 hover:bg-emerald-600 transition-all ease-in-out" >
+      <button type="submit" disabled={status === 'checking'} className="bg-twine-500 text-white self-center disabled:bg-twine-100 hover:bg-twine-600 transition-all ease-in-out" >
         Ingresar
       </button>
     </form>

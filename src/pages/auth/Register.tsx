@@ -50,11 +50,11 @@ export const Register = () => {
       <InputFieldPassword label="Contraseña" value={password} onChange={handleOnInputChange}
         placeholder="**********" isValid={!passwordValid && formSubmitted} description="Ingresa tu contraseña" minLength={5} />
       
-      <Link to="/auth" className="text-sm text-emerald-500" >
+      <Link to="/auth" className="text-sm text-twine-500" >
         ¿Ya tiene una cuenta?. ¡Inicia sesión aquí!.
       </Link>
 
-      <button type="submit" disabled={false} className="bg-emerald-400 text-white self-center disabled:bg-emerald-100 hover:bg-emerald-600 transition-all ease-in-out" >
+      <button type="submit" disabled={false} className="bg-twine-400 text-white self-center disabled:bg-twine-100 hover:bg-twine-600 transition-all ease-in-out" >
         Ingresar
       </button>
     </form>
