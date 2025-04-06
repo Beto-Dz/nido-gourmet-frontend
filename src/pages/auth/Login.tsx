@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { patterns } from "../../utilitys";
 import { useAuthSlice, useForm } from "../../hooks";
@@ -25,14 +25,13 @@ export const Login = () => {
   // estado para manejar cuando se hace submit y mostrar errores del formulario
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
-  const handleOnSubmit = (e: any) => {
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setFormSubmitted(true);
 
     if (!isValidForm) return;
-
-    // TODO: manejar respuesta
+    
     console.log(formObject)
 
     handleStartLogin(email, password);

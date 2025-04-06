@@ -12,7 +12,7 @@ backendAPI.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   config.headers = config.headers || {};
 
   // Agregar el token al encabezado
-  config.headers["x-token"] = window.localStorage.getItem("token") || "";
+  config.headers["x-token"] = window.localStorage.getItem("x-token") || "";
 
   return config;
 });
