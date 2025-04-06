@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import { LandingPage, Login, Register, Layout, Loader, Home, Devices, Profile } from "../pages";
+import { Routes, Route, Navigate } from "react-router";
+import { LandingPage, Login, Register, Layout, Loader, Home, Devices, Profile, DevicePage } from "../pages";
 import { useAuthSlice } from "../hooks";
 import { useEffect } from "react";
 import { LayoutApp } from "../pages/app/LayoutApp";
@@ -12,14 +12,13 @@ export const Router = () => {
   useEffect(() => {
     // Checkea si hay un token
     checkAuthToken();
-  }, [status]);
+  }, []);
 
   if (status === "checking") {
     return <Loader />;
   }
 
   return (
-    <BrowserRouter>
       <Routes>
         {/* Ruta inicial */}
         <Route index element={<LandingPage />} />
@@ -65,6 +64,14 @@ export const Router = () => {
               }
             />
             <Route
+              path="dispositivos/:feeder_id"
+              element={
+                <LayoutApp>
+                  <DevicePage />
+                </LayoutApp>
+              }
+            />
+            <Route
               path="perfil"
               element={
                 <LayoutApp>
@@ -79,6 +86,5 @@ export const Router = () => {
         {/* Rutas perdidas */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
   );
 };

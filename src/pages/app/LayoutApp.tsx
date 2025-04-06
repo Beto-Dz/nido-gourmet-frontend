@@ -76,7 +76,7 @@ export const LayoutApp:FC<Props> = ({ children }) => {
                   </li>
                 </ul>
             </aside>
-            <main className="p-2 ring ring-twine-300 dark:ring-gray-500">
+            <main className="p-2 ring ring-twine-300 dark:ring-gray-500 relative">
                 {children}
             </main>
         </section>

@@ -6,3 +6,4 @@ export * from "./loader/Loader.tsx";
 export * from "./app/Home.tsx";
 export * from "./app/Profile.tsx";
 export * from "./app/Devices.tsx";
+export * from "./app/DevicePage.tsx"
