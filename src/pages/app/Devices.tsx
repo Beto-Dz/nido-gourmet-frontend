@@ -2,9 +2,14 @@ import { Link } from "react-router";
 import { useDevice } from "../../hooks/devices/useDevice";
 import feederImage from '/assets/feeder.svg';
 import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const Devices = () => {
-  const { GetAllDevicesByUser, SetSingleDevice } = useDevice();
+
+  // obteniendo el cliente
+  const queryClient = useQueryClient();
+
+  const { GetAllDevicesByUser } = useDevice();
 
   const queryData = GetAllDevicesByUser();
 
@@ -13,9 +18,17 @@ export const Devices = () => {
 
   useEffect(() => {
     if(data?.data){
-      data?.data.forEach(device => SetSingleDevice(device));
+      data.data.forEach(device => {
+        queryClient.setQueryData(["devices", device.id], device);
+        // Esto adicionalmente hace el prefetch "oficial"
+        queryClient.prefetchQuery({
+          queryKey: ["devices", device.id],
+          queryFn: () => Promise.resolve(device)
+        });
+      });
     }
-  },[data?.data]);
+  }, [data?.data, queryClient]);
+  
 
   if (isError){
     return <h1>Algo salió mal...</h1>

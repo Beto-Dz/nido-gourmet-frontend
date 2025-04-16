@@ -4,8 +4,11 @@ export interface DevicesByUser {
     data: Datum[];
 }
 
+export interface SingleDevice {
+    data: Datum;
+}
+
 export interface Datum {
-    location:     Location;
     floodgates:   { [key: string]: Floodgate };
     isActive:     boolean;
     batteryLevel: number;
@@ -22,6 +25,7 @@ export interface Floodgate {
     saturday:  Day;
     sunday:    Day;
     visits:    Date[];
+    foodLevel: string;
     _id:       string;
 }
 
@@ -37,9 +41,4 @@ export enum EndTime {
 
 export enum StartTime {
     The0000 = "00:00",
-}
-
-export interface Location {
-    type:        string;
-    coordinates: number[];
 }

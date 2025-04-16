@@ -23,8 +23,10 @@ export const useDevice = () => {
       queryKey: ['devices', id],
       queryFn: () => getDeviceByID(id),
       staleTime: 1000 * 60,
-    })
-  }
+      enabled: !!id, // <- importante para evitar fetch con id vacío
+    });
+  };
+  
 
   return {
     GetAllDevicesByUser,

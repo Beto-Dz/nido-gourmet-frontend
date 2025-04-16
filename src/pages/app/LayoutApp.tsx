@@ -58,7 +58,7 @@ export const LayoutApp:FC<Props> = ({ children }) => {
         </header>
 
         <section className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-2 *:rounded-lg relative">
-            <aside className={`p-2 transition-all w-fit h-fit md:h-full md:px-4 absolute md:static bg-twine-600 dark:bg-dark ${!showSidebar && ' -left-full'}`}>
+            <aside className={`p-2 transition-all w-fit h-fit md:h-full md:px-4 absolute md:static bg-twine-600 dark:bg-dark z-50 ${!showSidebar && ' -left-full'}`}>
                 <ul className="flex flex-col gap-2 font-semibold">
                   <li onClick={handleHidden}>
                     <NavLink to="/nido" end

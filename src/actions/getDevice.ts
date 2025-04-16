@@ -1,5 +1,5 @@
 import backendAPI from "../api/backendAPI"
-import { Datum, DevicesByUser } from "../interfaces/";
+import { DevicesByUser, SingleDevice } from "../interfaces/";
 
 export const getDevice = async() => {
   const { data } = await backendAPI.get<DevicesByUser>('/device/feeders');
@@ -9,7 +9,7 @@ export const getDevice = async() => {
 
 
 export const getDeviceByID = async (id: string) => {
-  const { data } = await backendAPI.get<Datum>(`/device/feeder/${id}`);
+  const { data } = await backendAPI.get<SingleDevice>(`/device/feeder/${id}`);
 
-  return data;
+  return data.data;
 }
