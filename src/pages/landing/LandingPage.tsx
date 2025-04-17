@@ -1,6 +1,11 @@
+import { Link } from "react-router";
 import Particles from "../../components/reactbites/Particles/Particles"
+import { useAuthSlice } from "../../hooks"
 
 export const LandingPage = () => {
+
+  const { status } = useAuthSlice();
+
   return (
     <header className="w-full min-h-dvh bg-[url(/assets/hojas.svg)] bg-cover">
        <Particles
@@ -14,8 +19,11 @@ export const LandingPage = () => {
           alphaParticles={false}
           disableRotation={false}
         />
-        <section className="absolute top-0 right-0 bottom-0 left-0 backdrop-opacity-10">
-          Hola amigos
+        <section className="absolute top-0 right-0 bottom-0 left-0 backdrop-opacity-10 grid place-items-center">
+          <Link to={status === "authenticated" ? "/nido/dispositivos" : "/auth"}
+                className="bg-red-400 p-1 px-2 rounded-2xl font-semibold text-white">
+            { status === "authenticated" ? "Ingresar" : "Iniciar sesión" }
+          </Link>
         </section>
     </header>
   )

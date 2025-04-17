@@ -4,6 +4,7 @@ import { setCheckingStatus, onLogin, onLogout } from "../../store";
 import backendAPI from "../../api/backendAPI";
 import { LoginResponse } from "../../interfaces/LoginResponse";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export const useAuthSlice = () => {
   // obteniendo la procion de estado auth
@@ -14,6 +15,13 @@ export const useAuthSlice = () => {
 
   // utilizando el hokk de router dom para redirigir según sea el caso
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      navigate("/nido", { replace: true });
+    }
+  }, [status]);
 
   /**
    * Funcion de ayuda para inicializar el login de la app
@@ -35,9 +43,6 @@ export const useAuthSlice = () => {
 
       // guardando el token en el localStorage
       window.localStorage.setItem("x-token", data.token);
-
-      // finalmente nos redirigimos al nido
-      navigate('/nido', {replace: true});
     } catch (error) {
       console.log(error);
     }
