@@ -28,13 +28,15 @@ export const useForm = <T extends FormState>(
   // estado para las validaciones
   const [formValidation, setFormValidation] = useState<FormValidationState>({});
 
+  const memoizedValidations = useMemo(() => formValidations, []);
+
   useEffect(() => {
     const objeto: FormValidationState = {};
     Object.keys(formValidations).forEach((key) => {
       objeto[`${key}Valid`] = formValidations[key]?.(formState[key]);
     });
     setFormValidation(objeto);
-  }, [formState, formValidations]);
+  }, [formState, memoizedValidations]);
 
   // funcion para saber si el formulario está listo para ser enviado al backend
   const isValidForm = useMemo(() => {

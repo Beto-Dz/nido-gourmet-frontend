@@ -4,6 +4,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { useWebSock } from "../../hooks";
 import { Datum } from "../../interfaces";
+import { DetailsDevice } from "../../components";
 
 export const DevicePage = () => {
 
@@ -41,11 +42,11 @@ export const DevicePage = () => {
       setDevice(deviceQuery);
       console.log("Datos establecidos desde query cacheada:", deviceQuery);
     }
-
   }
 
   // Efecto para manejar actualizaciones del socket y la query
   useEffect(defineDevice, [deviceQuery, lastMessage]);
+
 
   const navigate = useNavigate();
   
@@ -80,7 +81,6 @@ export const DevicePage = () => {
   .filter(([key]) => key !== '_id' && key !== 'visits' && key !== 'foodLevel')
   .map(([key, value]) => ({ key, ...value }));
   
-
   return (
     <section className="flex flex-col">
 
@@ -127,21 +127,7 @@ export const DevicePage = () => {
           <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {
                 days.map(day => (
-                  <details key={day.key} className="rounded-2xl p-2 bg-twine-100 border border-twine-500 font-semibold">
-                    <summary className="capitalize text-center" lang="en">{day.key}</summary>
-                    <div className="flex flex-col gap-1 items-center">
-                      <label htmlFor="startTime">Hora de inicio</label>
-                      <input className="p-1 rounded-md border border-twine-300 cursor-pointer"
-                        type="time" name="startTime" id="startTime" value={day.startTime} onChange={() => {}} />
-                    </div>
-
-                    <div className="flex flex-col gap-1 items-center">
-                      <label htmlFor="endTime">Hora fin</label>
-                      <input className="p-1 rounded-md border border-twine-300 cursor-pointer"
-                        type="time" name="endTime" id="endTime" value={day.endTime} onChange={() => {}} />
-                    </div>
-
-                  </details>
+                  <DetailsDevice key={day.key} keyDay={day.key} feederId={device.id} floodgate={1} startTime={day.startTime} endTime={day.endTime} handleOnSend={sendMessage} />
                 ))       
               }
           </section>
@@ -164,21 +150,7 @@ export const DevicePage = () => {
           <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {
                 days2.map(day => (
-                  <details key={day.key} className="rounded-2xl p-2 bg-twine-100 border border-twine-500 font-semibold">
-                    <summary className="capitalize text-center" lang="en">{day.key}</summary>
-                    <div className="flex flex-col gap-1 items-center">
-                      <label htmlFor="startTime">Hora de inicio</label>
-                      <input className="p-1 rounded-md border border-twine-300 cursor-pointer"
-                        type="time" name="startTime" id="startTime" value={day.startTime} onChange={() => {}} />
-                    </div>
-
-                    <div className="flex flex-col gap-1 items-center">
-                      <label htmlFor="endTime">Hora fin</label>
-                      <input className="p-1 rounded-md border border-twine-300 cursor-pointer"
-                        type="time" name="endTime" id="endTime" value={day.endTime} onChange={() => {}} />
-                    </div>
-
-                  </details>
+                  <DetailsDevice key={day.key} keyDay={day.key} feederId={device.id} floodgate={2} startTime={day.startTime} endTime={day.endTime} handleOnSend={sendMessage} />
                 ))       
               }
           </section>
