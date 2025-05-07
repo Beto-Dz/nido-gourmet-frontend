@@ -26,7 +26,16 @@ export const DetailsDevice: FC<props> = ({ feederId, floodgate, keyDay, startTim
       if(startTimeHook < endTime){
         handleOnSend(JSON.stringify({type: "update_floodgate", feederId, floodgate, day: keyDay, startTime: startTimeHook, endTime: endTimeHook}));
       }
+  }
 
+  const daysWeek = {
+    monday: "lunes",
+    tuesday: "martes",
+    wednesday: "miércoles",
+    thursday: "jueves",
+    friday: "viernes",
+    saturday: "sábado",
+    sunday: "domingo",
   }
     
 
@@ -35,7 +44,7 @@ export const DetailsDevice: FC<props> = ({ feederId, floodgate, keyDay, startTim
       className="rounded-2xl p-2 bg-twine-100 border border-twine-500 font-semibold"
     >
       <summary className="capitalize text-center" lang="en">
-        {keyDay}
+        {daysWeek[keyDay]}
       </summary>
       <form onSubmit={onSubmit}>
         <div className="flex flex-col gap-1 items-center">
