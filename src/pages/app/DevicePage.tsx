@@ -26,8 +26,11 @@ export const DevicePage = () => {
     // Solo actualizar si tenemos datos nuevos del socket
     if (lastMessage) {
       try {
+        // Parsear el mensaje del socket
         const data = JSON.parse(String(lastMessage.data));
-        if (data) {
+
+        // Si el mensaje no es de abrir o cerrar compuertas, actualizar el estado
+        if (data && data.type !== "open_servos" && data.type !== "close_servos" && data.type !== "open_servo" && data.type !== "close_servo") {
           setDevice(data);
           console.log("Datos actualizados desde socket:", data);
         }
