@@ -30,7 +30,7 @@ export const DevicePage = () => {
         const data = JSON.parse(String(lastMessage.data));
 
         // Si el mensaje no es de abrir o cerrar compuertas, actualizar el estado
-        if (data && data.type !== "open_servos" && data.type !== "close_servos" && data.type !== "open_servo" && data.type !== "close_servo") {
+        if (data && data.type === 'update_status' &&  data.type !== "open_servos" && data.type !== "close_servos" && data.type !== "open_servo" && data.type !== "close_servo") {
           setDevice(data);
           console.log("Datos actualizados desde socket:", data);
         }
@@ -94,7 +94,7 @@ export const DevicePage = () => {
 
       {/*  */}
       <section className="flex flex-col gap-3">
-        <h1 className="text-center font-bold text-lg">{`Comedero: #${device?.id}`}</h1>
+        <h1 className="text-center font-bold text-lg">{`Comedero: #${device?.id || device._id}`}</h1>
         <section className="grid grid-cols-2 gap-2 *:p-2 *:flex *:flex-col *:justify-center *:items-center font-semibold">
           <div className="rounded-2xl bg-twine-100 border border-twine-500">
             <label htmlFor="battery">Nivel de batería: {device?.batteryLevel}%</label>

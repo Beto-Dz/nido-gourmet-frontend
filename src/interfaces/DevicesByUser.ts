@@ -14,6 +14,7 @@ export interface Datum {
     batteryLevel: number;
     user:         string;
     id:           string;
+    _id?:           string;
 }
 
 export interface Floodgate {
