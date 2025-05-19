@@ -40,25 +40,29 @@ export const Devices = () => {
 
 
   return (
-    <section className="grid grid-cols-auto">
-    
-    {
-      data?.data.map(feeder => (
-        <Link to={`/nido/dispositivos/${feeder.id}`} className="rounded-xl border-solid border-twine-200 border grid p-2" key={feeder.id}>
-          <figure>
-            <img src={feederImage} alt="imagen de casa de pajaro" />
-            <figcaption>{feeder.id.substring(0, 8)} - {feeder.batteryLevel}%</figcaption>
-          </figure>
-          <footer>
-            <p>Nivel de batería: {feeder.batteryLevel}%</p>
-            <p className="flex items-center gap-2">
-              Activo: <span className={`block size-2 rounded-full animate-ping ${feeder.isActive ? 'bg-lime-300' : 'bg-red-300' }`}> </span> 
-            </p>
-          </footer>
-        </Link>
-      ))
-    }
+    <div>
+      <h1 className="mb-2" >A continuación, podrás ver tus dispositivos.</h1>
 
-    </section>
+      <section className="grid grid-cols-auto">
+      
+      {
+        data?.data.map(feeder => (
+          <Link to={`/nido/dispositivos/${feeder.id}`} className="rounded-xl border-solid border-twine-200 border grid p-2" key={feeder.id}>
+            <figure>
+              <img src={feederImage} alt="imagen de casa de pajaro" />
+              <figcaption>{feeder.id.substring(0, 8)} - {feeder.batteryLevel}%</figcaption>
+            </figure>
+            <footer>
+              <p>Nivel de batería: {feeder.batteryLevel}%</p>
+              <p className="flex items-center gap-2">
+                Activo: <span className={`block size-2 rounded-full animate-ping ${feeder.isActive ? 'bg-lime-300' : 'bg-red-300' }`}> </span> 
+              </p>
+            </footer>
+          </Link>
+        ))
+      }
+
+      </section>
+    </div>
   )
 };

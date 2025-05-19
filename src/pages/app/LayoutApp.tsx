@@ -1,4 +1,4 @@
-import { Bars2Icon, Cog6ToothIcon, CubeIcon, HomeIcon, UserIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
+import { Bars2Icon, Cog6ToothIcon, CubeIcon, UserIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/solid";
 import { FC, ReactNode, useEffect, useState } from "react"
 import { NavLink } from "react-router";
 import { SwitchDarkMode } from "../../components";
@@ -60,13 +60,6 @@ export const LayoutApp:FC<Props> = ({ children }) => {
         <section className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-2 *:rounded-lg relative">
             <aside className={`p-2 transition-all w-fit h-fit md:h-full md:px-4 absolute md:static bg-twine-600 dark:bg-dark z-50 ${!showSidebar && ' -left-full'}`}>
                 <ul className="flex flex-col gap-2 font-semibold">
-                  <li onClick={handleHidden}>
-                    <NavLink to="/nido" end
-                      className={({ isActive }) => 
-                        (`p-1 px-2 rounded-md btn flex items-center gap-2 transition-all hover:bg-twine-400 dark:hover:bg-dark-light ${isActive && 'text-twine-50 dark:text-twine-300'}`) } >
-                      <HomeIcon className="size-5" /> <span className={`${!showSidebar && 'hidden'}`}>Inicio</span>
-                    </NavLink>
-                  </li>
                   <li onClick={handleHidden}>
                     <NavLink to="/nido/dispositivos"
                       className={({ isActive }) => 

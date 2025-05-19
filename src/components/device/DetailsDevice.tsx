@@ -41,7 +41,7 @@ export const DetailsDevice: FC<props> = ({ feederId, floodgate, keyDay, startTim
 
   return (
     <details
-      className="rounded-2xl p-2 bg-twine-100 border border-twine-500 font-semibold"
+      className="rounded-2xl p-2 bg-twine-100 border border-twine-500 dark:bg-dark dark:border-twine-100 font-semibold"
     >
       <summary className="capitalize text-center" lang="en">
         {daysWeek[keyDay]}
@@ -72,7 +72,7 @@ export const DetailsDevice: FC<props> = ({ feederId, floodgate, keyDay, startTim
           />
         </div>
 
-        <button type="submit" className="bg-sky-300 text-xs p-1 flex gap-2 mx-auto mt-1">Aceptar</button>
+        <button type="submit" className="bg-sky-300 dark:bg-dark-light border border-white text-xs p-1 flex gap-2 mx-auto mt-1">Aceptar</button>
       </form>
     </details>
   );

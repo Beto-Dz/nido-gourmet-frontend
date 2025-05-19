@@ -19,7 +19,7 @@ export const useAuthSlice = () => {
 
   useEffect(() => {
     if (status === "authenticated") {
-      navigate("/nido", { replace: true });
+      navigate("/nido/dispositivos", { replace: true });
     }
   }, [status]);
 

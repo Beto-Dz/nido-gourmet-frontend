@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useWebSock } from "../../hooks";
 import { Datum } from "../../interfaces";
 import { DetailsDevice } from "../../components";
+import DialogVisits from "@/components/device/DialogVisits";
 
 export const DevicePage = () => {
 
@@ -96,11 +97,11 @@ export const DevicePage = () => {
       <section className="flex flex-col gap-3">
         <h1 className="text-center font-bold text-lg">{`Comedero: #${device?.id || device._id}`}</h1>
         <section className="grid grid-cols-2 gap-2 *:p-2 *:flex *:flex-col *:justify-center *:items-center font-semibold">
-          <div className="rounded-2xl bg-twine-100 border border-twine-500">
+          <div className="rounded-2xl bg-twine-100 border border-twine-500 dark:bg-dark-light dark:border-twine-100">
             <label htmlFor="battery">Nivel de batería: {device?.batteryLevel}%</label>
             <meter id="battery" min={0} max={100} low={20} high={80} optimum={100} value={device?.batteryLevel}>{device?.batteryLevel}%</meter>
           </div>
-          <div className="rounded-2xl bg-twine-100 border border-twine-500">
+          <div className="rounded-2xl bg-twine-100 border border-twine-500 dark:bg-dark-light dark:border-twine-100">
             <p className="flex items-center gap-2">
               Activo: <span className={`block size-2 rounded-full animate-ping ${device?.isActive ? 'bg-lime-300' : 'bg-red-300' }`}> </span> 
             </p>
@@ -108,18 +109,21 @@ export const DevicePage = () => {
         </section>
 
         {/*  */}
-        <section className="*:bg-twine-400 *:border *:border-twine-800 *:text-xs *:p-1 flex gap-2">
+        <section className="*:bg-twine-400 *:border *:border-twine-800 *:dark:bg-dark-light *:text-xs *:p-1 flex gap-2">
           <button onClick={() => handleSendMessage("open_servos", 0)}>Abrir compuertas</button>
           <button onClick={() => handleSendMessage("close_servos", 0)}>Cerrar compuertas</button>
         </section>
 
-        <section className="bg-twine-200 p-1 rounded-2xl">
-          <h2 className="font-bold text-center text-lg">Compuerta #1</h2>
+        <section className="bg-twine-200 dark:bg-dark-light p-1 rounded-2xl">
+          <h2 className="font-bold text-lg flex items-center justify-center">Compuerta #1</h2>
+          <div className="flex items-center justify-center">
+            <DialogVisits visits={device.floodgates["1"].visits.map(visit => new Date(visit))} floodgateNumber={1} />
+          </div>
           <div className="flex items-center gap-2 w-fit mx-auto py-4">
             <h3>Acciones:</h3>
-            <section  className="*:bg-twine-300 *:border *:border-twine-400 *:text-xs *:p-1 flex gap-2">
-              <button onClick={() => handleSendMessage("open_servo", 1)}>Abrir compuerta 1</button>
-              <button onClick={() => handleSendMessage("close_servo", 1)}>Cerrar compuerta 1</button>
+            <section  className="*:bg-twine-300 *:border *:border-twine-400 *:dark:bg-dark-light *:text-xs *:p-1 flex gap-2">
+              <button onClick={() => handleSendMessage("open_servo", 1)}>Abrir</button>
+              <button onClick={() => handleSendMessage("close_servo", 1)}>Cerrar</button>
             </section>
           </div>
           <div className="flex flex-col items-center gap-2 w-fit mx-auto py-4">
@@ -136,13 +140,16 @@ export const DevicePage = () => {
           </section>
         </section>
 
-        <section className="bg-twine-200 p-1 rounded-2xl">
-          <h2 className="font-bold text-center text-lg">Compuerta #2</h2>
+        <section className="bg-twine-200 dark:bg-dark-light p-1 rounded-2xl">
+          <h2 className="font-bold text-lg flex items-center justify-center">Compuerta #2</h2>
+          <div className="flex items-center justify-center">
+            <DialogVisits visits={device.floodgates["2"].visits.map(visit => new Date(visit))} floodgateNumber={2} />
+          </div>
           <div className="flex items-center gap-2 w-fit mx-auto py-4">
             <h3>Acciones:</h3>
-            <section  className="*:bg-twine-300 *:border *:border-twine-400 *:text-xs *:p-1 flex gap-2">
-              <button onClick={() => handleSendMessage("open_servo", 2)}>Abrir compuerta 2</button>
-              <button onClick={() => handleSendMessage("close_servo", 2)}>Cerrar compuerta 2</button>
+            <section  className="*:bg-twine-300 *:border *:border-twine-400 *:dark:bg-dark-light *:text-xs *:p-1 flex gap-2">
+              <button onClick={() => handleSendMessage("open_servo", 2)}>Abrir</button>
+              <button onClick={() => handleSendMessage("close_servo", 2)}>Cerrar</button>
             </section>
           </div>
           <div className="flex flex-col items-center gap-2 w-fit mx-auto py-4">

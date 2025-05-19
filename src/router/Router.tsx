@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router";
-import { LandingPage, Login, Register, Layout, Loader, Home, Devices, Profile, DevicePage } from "../pages";
+import { LandingPage, Login, Register, Layout, Loader, Devices, Profile, DevicePage } from "../pages";
 import { useAuthSlice } from "../hooks";
 import { useEffect } from "react";
 import { LayoutApp } from "../pages/app/LayoutApp";
@@ -47,14 +47,6 @@ export const Router = () => {
         ) : (
           // Rutas de app cuando se está autenticado
           <Route path="nido">
-            <Route
-              index
-              element={
-                <LayoutApp>
-                  <Home />
-                </LayoutApp>
-              }
-            />
             <Route
               path="dispositivos"
               element={
